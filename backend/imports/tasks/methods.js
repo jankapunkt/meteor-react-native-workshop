@@ -1,5 +1,5 @@
-import { TasksCollection } from './TasksCollection'
-import { NotSignedInError } from '../errors/NotSignedInError'
+import { TasksCollection } from "./TasksCollection";
+import { NotSignedInError } from "../errors/NotSignedInError";
 
 /**
  * @module tasks/methods
@@ -10,11 +10,11 @@ import { NotSignedInError } from '../errors/NotSignedInError'
  * @private
  * @param userId {string}
  */
-const checkUser = userId => {
+const checkUser = (userId) => {
   if (!userId) {
-    throw new NotSignedInError({ userId })
+    throw new NotSignedInError({ userId });
   }
-}
+};
 
 /**
  * Returns a current user's tasks
@@ -22,11 +22,11 @@ const checkUser = userId => {
  * @function
  * @return {Mongo.Cursor}
  */
-export const getMyTasks = function () {
-  const userId = this.userId
-  checkUser(userId)
-  return TasksCollection.find({ userId })
-}
+export const getMyTasks = async function () {
+  const userId = this.userId;
+  checkUser(userId);
+  return await TasksCollection.find({ userId });
+};
 
 /**
  * Creates a new task document
@@ -35,13 +35,18 @@ export const getMyTasks = function () {
  * @param text {string}
  * @return {string} inserted document _id
  */
-export const insertTask = function ({ text }) {
-  const userId = this.userId
-  checkUser(userId)
-  const checked = false
-  const createdAt = new Date()
-  return TasksCollection.insert({ text, userId, checked, createdAt })
-}
+export const insertTask = async function ({ text }) {
+  const userId = this.userId;
+  checkUser(userId);
+  const checked = false;
+  const createdAt = new Date();
+  return await TasksCollection.insertAsync({
+    text,
+    userId,
+    checked,
+    createdAt,
+  });
+};
 
 /**
  * Sets checked status for a task
@@ -51,11 +56,14 @@ export const insertTask = function ({ text }) {
  * @param checked {boolean}
  * @return {number} 1 if successfull, otherwise 0
  */
-export const checkTask = function ({ _id, checked }) {
-  const userId = this.userId
-  checkUser(userId)
-  return TasksCollection.update({ _id, userId }, { $set: { checked } })
-}
+export const checkTask = async function ({ _id, checked }) {
+  const userId = this.userId;
+  checkUser(userId);
+  return await TasksCollection.updateAsync(
+    { _id, userId },
+    { $set: { checked } }
+  );
+};
 
 /**
  * Removes a task
@@ -64,8 +72,8 @@ export const checkTask = function ({ _id, checked }) {
  * @param _id {string}
  * @return {number} 1 if successfull, otherwise 0
  */
-export const removeTask = function ({ _id }) {
-  const userId = this.userId
-  checkUser(userId)
-  return TasksCollection.remove({ _id, userId })
-}
+export const removeTask = async function ({ _id }) {
+  const userId = this.userId;
+  checkUser(userId);
+  return await TasksCollection.removeAsync({ _id, userId });
+};
