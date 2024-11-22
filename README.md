@@ -15,8 +15,8 @@ After post-editing it resulted in a complete starter repo. 🤩
 
 ## About
 
-Meteor and React Native are not integrated with each other by default. 
-However, there are great packages out there, that help us to make them integrate. 
+Meteor and React Native are not integrated with each other by default.
+However, there are great packages out there, that help us to make them integrate.
 The best is, it's actually not that difficult!
 
 This starter brings the most basic integration for a Meteor project as a backend for your react native app.
@@ -26,7 +26,7 @@ Just follow the instructions in this readme to get startet immediately.
 
 ## Installation
 
-You need to have Meteor installed on your system. 
+You need to have Meteor installed on your system.
 Follow the Meteor installation instructions on [the Meteor website](https://meteor.com).
 
 ### Create a new project from this template repo
@@ -39,7 +39,7 @@ If you want to clone it directly, you can do it via
 $ git clone git@github.com:jankapunkt/meteor-react-native-starter.git
 ```
 
-### Install and run the Meteor backend
+### Install and run the Meteor backend (headless)
 
 ```bash
 $ cd backend
@@ -51,6 +51,20 @@ The backend will install and start. If everything went fine, you should see the 
 
 ```bash
 => App running at: http://localhost:8000/
+```
+
+### Alternate backend (with UI)
+
+With thanks to [@fredmaiaarantes](https://github.com/fredmaiaarantes), we have transplanted a Meteor 3.1 "To do" app that shares data with the React Native mobile app.
+
+![Task Form](fm-backend/README-Assets/task_example.png)
+
+You can see how the UI updates instantly between the mobile app and the browser
+
+```bash
+$ cd fm-backend
+$ meteor npm install
+$ meteor npm run start
 ```
 
 ## Install and run the mobile app
@@ -79,7 +93,7 @@ in order to make the RN app connect. The Meteor-typical `localhost` will not wor
 First, get your local ip via
 
 | os      | command        |
-|---------|----------------|
+| ------- | -------------- |
 | Linux   | `ip addr show` |
 | MaxOs   | `ifconfig`     |
 | Windows | `ipconfig`     |
@@ -121,7 +135,8 @@ If you still prefer an emulator, please install them on your own behalf.
 
 This project comes with a builtin test-stack for backend and app!
 
-The backend uses 
+The backend uses
+
 - `meteortesting:mocha` as test runner
 - `chai` as assertion lib
 - `sinon` for stubs
@@ -130,6 +145,7 @@ The backend uses
 - `standardx` with some teaks as linter (basically eslint)
 
 The app uses
+
 - `jest` as test runner and assertion lib
 - `standardx` with some teaks as linter (basically eslint)
 
@@ -142,7 +158,7 @@ To generate docs you can use the respective npm scripts in backend and app.
 
 ## Get involved
 
-You liked this workshop or used this repo as a starter? 
+You liked this workshop or used this repo as a starter?
 Please leave a star and help by contributing to [@meteorrn/core](https://github.com/meteorrn/meteor-react-native).
 
 If you find issues within the code, please leave an issue.

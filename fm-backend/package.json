@@ -1,0 +1,62 @@
+{
+  "name": "simpletasks",
+  "author": "@fredmaiaarantes",
+  "version": "1.0.3",
+  "private": true,
+  "scripts": {
+    "start": "meteor --exclude-archs web.browser.legacy,web.cordova --settings private/settings.json --port=8000",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "check": "npx @biomejs/biome check --write ./**/*.{js,jsx}",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.24.8",
+    "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@hookform/resolvers": "^2.9.11",
+    "@react-icons/all-files": "^4.1.0",
+    "bcrypt": "^5.1.1",
+    "framer-motion": "^6.5.1",
+    "history": "^5.3.0",
+    "meteor-node-stubs": "^1.2.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.52.1",
+    "react-router-dom": "^6.25.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@types/meteor": "^2.9.8",
+    "@types/mocha": "^9.1.1",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "chai": "^4.4.1"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "ui/main.jsx",
+      "server": "api/main.js"
+    },
+    "testModule": "tests/main.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "meteor npm test && lint-staged",
+      "post-commit": "git update-index --again"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "biome check --files-ignore-unknown=true",
+      "biome check --write --no-errors-on-unmatched",
+      "biome check --write --organize-imports-enabled=false --no-errors-on-unmatched",
+      "biome check --write --unsafe --no-errors-on-unmatched",
+      "biome format --write --no-errors-on-unmatched",
+      "biome lint --write --no-errors-on-unmatched"
+    ]
+  }
+}

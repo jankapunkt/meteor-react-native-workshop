@@ -1,11 +1,9 @@
 {
   "expo": {
-    "name": "app",
-    "slug": "app",
+    "name": "todo",
+    "slug": "to-do",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "jsEngine": "hermes"
   }
 }

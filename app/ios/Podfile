@@ -9,7 +9,7 @@ platform :ios, podfile_properties['ios.deploymentTarget'] || '12.4'
 install! 'cocoapods',
   :deterministic_uuids => false
 
-target 'app' do
+target 'todo' do
   use_expo_modules!
   config = use_native_modules!
 

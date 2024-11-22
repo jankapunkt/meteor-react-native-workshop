@@ -1,0 +1,22 @@
+{
+  "public": {
+    "appInfo": {
+      "name": "Charm - Chakra-UI, React, Meteor"
+    }
+  },
+  "packages": {
+    "service-configuration": {
+      "github": {
+        "loginStyle": "popup",
+        "clientId": "REPLACE_WITH_YOUR_CLIENT_ID",
+        "secret": "REPLACE_WITH_YOUR_SECRET"
+      }
+    }
+  },
+  "galaxy.meteor.com": {
+    "env": {
+      "ROOT_URL": "REPLACE_WITH_YOUR_DOMAIN",
+      "MONGO_URL": "REPLACE_WITH_YOUR_MONGO_URL"
+    }
+  }
+}
